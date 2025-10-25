@@ -5,7 +5,3 @@ matplotlib
 skops
 black
 mlflow
-scikit-learn
-pandas
-numpy
-echo "# Updated" >> requirements.txt
