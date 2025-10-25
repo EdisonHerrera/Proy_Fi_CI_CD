@@ -4,3 +4,7 @@ numpy
 matplotlib
 skops
 black
+mlflow
+scikit-learn
+pandas
+numpy
