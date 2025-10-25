@@ -9,18 +9,16 @@ import pandas as pd
 from mlflow.models import infer_signature
 import sys
 import traceback
+from pathlib import Path
 
 print(f"--- Debug: Initial CWD: {os.getcwd()} ---")
-
 # --- Define Paths ---
 # Usar rutas absolutas dentro del workspace del runner
-workspace_dir = os.getcwd() # Debería ser /home/runner/work/mlflow-deploy/mlflow-deploy
-mlruns_dir = os.path.join(workspace_dir, "mlruns")
-tracking_uri = "file://" + os.path.abspath(mlruns_dir)
+mlruns_dir = Path.cwd() / "mlruns"
+tracking_uri = mlruns_dir.as_uri()  # Esto crea automáticamente file:///C:/...
 # Definir explícitamente la ubicación base deseada para los artefactos
-artifact_location = "file://" + os.path.abspath(mlruns_dir)
+artifact_location = tracking_uri
 
-print(f"--- Debug: Workspace Dir: {workspace_dir} ---")
 print(f"--- Debug: MLRuns Dir: {mlruns_dir} ---")
 print(f"--- Debug: Tracking URI: {tracking_uri} ---")
 print(f"--- Debug: Desired Artifact Location Base: {artifact_location} ---")
@@ -114,4 +112,12 @@ except Exception as e:
          print(f"URI del Artefacto del Run en el error: {run.info.artifact_uri}")
     else:
          print("El objeto Run no se creó con éxito.")
+
+
+         
     sys.exit(1)
+    # Guardar también el modelo en la raíz para validate.py
+import pickle
+with open('model.pkl', 'wb') as f:
+    pickle.dump(model, f)
+print("--- Debug: Modelo guardado en model.pkl ---")

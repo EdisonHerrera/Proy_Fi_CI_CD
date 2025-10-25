@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/edison.herrera/Videos/mlflow-deploy/mlruns/models/m-7a2b70a7bab44fefbc0394dd4c654b9a/artifacts
+creation_timestamp: 1761405626867
+experiment_id: '609652373660904682'
+last_updated_timestamp: 1761405637763
+model_id: m-7a2b70a7bab44fefbc0394dd4c654b9a
+model_type: null
+name: model
+source_run_id: b0e7e8eb74fe441f9c24fb3be9a2755b
+status: 2
+status_message: null
